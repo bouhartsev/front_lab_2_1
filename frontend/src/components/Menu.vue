@@ -3,6 +3,11 @@
         <v-app-bar-nav-icon @click="$parent.$parent.$refs.nav.burger_click()"></v-app-bar-nav-icon>
 
         <v-btn :to="{ name: 'Home' }">
+            <h1>Паладин</h1>
+            
+        </v-btn>
+
+        <v-btn :to="{ name: 'Home' }">
             Главная
         </v-btn>
 
