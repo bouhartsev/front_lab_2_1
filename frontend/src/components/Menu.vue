@@ -1,52 +1,60 @@
 <template>
-    <v-app-bar app dark>
+    <v-app-bar app extended prominent elevate-on-scroll>
+        <!--   shrink-on-scroll extended prominent scroll-off-screen -->
         <v-app-bar-nav-icon @click="$parent.$parent.$refs.nav.burger_click()"></v-app-bar-nav-icon>
 
-        <v-btn :to="{ name: 'Home' }">
-            <h1>Паладин</h1>
-            
-        </v-btn>
+        <!-- <v-app-bar-title>Test</v-app-bar-title> -->
+        <router-link :to="{ name: 'Home' }">
+                <v-img src="https://picsum.photos/200/100"></v-img>
+                
+        </router-link>
 
         <v-btn :to="{ name: 'Home' }">
             Главная
         </v-btn>
 
-        <v-tooltip bottom>
+        <v-btn :to="{ name: 'Services' }">
+            Услуги
+        </v-btn>
+
+        <v-btn :to="{ name: 'Contacts' }">
+            Контакты
+        </v-btn>
+
+        <v-btn :to="{ name: 'About' }">
+            О нас
+        </v-btn>
+
+        <!-- <v-tooltip bottom>
             <template v-slot:activator="{ on, attrs }">
                 <v-btn icon :to="{ name: 'About' }" exact v-bind="attrs" v-on="on">
                     <v-icon>help</v-icon>
                 </v-btn>
             </template>
             <span>About</span>
-        </v-tooltip>
+        </v-tooltip> -->
 
         <v-spacer></v-spacer>
 
-        <Search style="flex: 0.1 1 auto;" v-show="$vuetify.breakpoint.smAndUp" :search_value.sync="search_value"></Search>
-        <v-btn icon v-show="$vuetify.breakpoint.xsOnly" @click="openSearch=true">
-            <v-icon>mdi-magnify</v-icon>
+        <v-btn :to="{ name: 'Order' }">
+            Заказ
         </v-btn>
-        <v-dialog
-            v-model="openSearch"
-            hide-overlay
-            transition="slide-y-transition"
-            :value="$vuetify.breakpoint.xs"
-        >
-            <v-card v-show="$vuetify.breakpoint.xsOnly">
-                <v-container>
-                <Search autofocus :search_value.sync="search_value"></Search>
-                </v-container>
-            </v-card>
-        </v-dialog>
 
-        <v-tooltip bottom>
-            <template v-slot:activator="{ on, attrs }">
-                <v-btn icon @click="changeTheme" exact v-bind="attrs" v-on="on">
-                    <v-icon>mdi-theme-light-dark</v-icon>
-                </v-btn>
-            </template>
-            <span>Theme</span>
-        </v-tooltip>
+        <!-- hide on scroll -->
+        <template v-slot:extension>
+            <router-link :to="{ name: 'Home' }">
+                    <h1>Паладин</h1>
+                    <strong>оперативная полиграфия</strong>
+            </router-link>
+            <v-breadcrumbs
+                :items="[{text: 'Главная'}, {text: 'Новости'}, {text: 'Открытие'}]"
+                large
+            ></v-breadcrumbs>
+            <v-spacer></v-spacer>
+
+            <a href="tel:8495290-31-21">8 (495) 290-31-21</a>
+            <v-btn link>Обратный звонок</v-btn>
+        </template>
     </v-app-bar>
 </template>
 
