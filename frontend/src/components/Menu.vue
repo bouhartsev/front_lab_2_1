@@ -1,5 +1,7 @@
 <template>
-    <v-app-bar app elevate-on-scroll shrink-on-scroll v-scroll="onScroll" height="300px" extension-height="0">
+    <v-app-bar app elevate-on-scroll v-scroll="onScroll" extension-height="fit-content" height="fit-content">
+
+        <!--  shrink-on-scroll height="300px"  -->
 
         <!-- {{ window.pageYOffset }} -->
         <!-- v-scroll="onScroll" -->
@@ -7,24 +9,24 @@
         <!-- <v-app-bar-nav-icon @click="$parent.$parent.$refs.nav.burger_click()"></v-app-bar-nav-icon> -->
 
         <!-- <v-app-bar-title>Test</v-app-bar-title> -->
-        <router-link :to="{ name: 'Home' }">
-                <v-img src="https://picsum.photos/200/50"></v-img>
+        <router-link :to="{ name: 'Home' }" class="col-sm-2">
+                <v-img src="https://picsum.photos/300/140"></v-img>
                 
         </router-link>
 
-        <v-btn :to="{ name: 'Home' }">
+        <v-btn :to="{ name: 'Home' }" class="menu__btn">
             Главная
         </v-btn>
 
-        <v-btn :to="{ name: 'Services' }">
+        <v-btn :to="{ name: 'Services' }" class="menu__btn">
             Услуги
         </v-btn>
 
-        <v-btn :to="{ name: 'Contacts' }">
+        <v-btn :to="{ name: 'Contacts' }" class="menu__btn">
             Контакты
         </v-btn>
 
-        <v-btn :to="{ name: 'About' }">
+        <v-btn :to="{ name: 'About' }" class="menu__btn">
             О нас
         </v-btn>
 
@@ -39,7 +41,7 @@
 
         <v-spacer></v-spacer>
 
-        <v-btn :to="{ name: 'Order' }">
+        <v-btn :to="{ name: 'Order' }" class="menu__btn">
             Заказ
         </v-btn>
 
@@ -63,7 +65,7 @@
                             <span>//Поиск</span>
                         </v-row>
                     </v-col>
-                    <v-col sm="3">
+                    <v-col sm="2">
                         <a href="tel:8495290-31-21">8 (495) 290-31-21</a>
                         <v-btn link>Обратный звонок</v-btn>
                     </v-col>
@@ -89,7 +91,7 @@ export default {
     // },
     methods: {
       onScroll (e) {
-        this.isScrolled = (e.target.scrollingElement.scrollTop<50)?false:true;
+        this.isScrolled = (e.target.scrollingElement.scrollTop<30)?false:true;
       },
     },
 }
@@ -98,5 +100,12 @@ export default {
 <style>
 .v-toolbar__extension, .v-toolbar__extension>* {
     align-items: flex-end;
+    transition: height 2s ease-in-out;
+}
+.v-toolbar__content {
+    align-items: center;
+}
+.menu__btn {
+    margin: 20px;
 }
 </style>
