@@ -1,5 +1,5 @@
 <template>
-    <v-app-bar app elevate-on-scroll hide-on-scroll extension-height="120px">
+    <v-app-bar app elevate-on-scroll hide-on-scroll extension-height="140px">
         <v-col sm="2" style="max-height: 100%; overflow: hidden;">
             <router-link :to="{ name: 'Home' }"  class="description">
                 <strong>оперативная полиграфия</strong>
@@ -8,16 +8,16 @@
         <v-col>
             <v-row>
                 <v-breadcrumbs
-                    :items="[{text: 'Главная'}, {text: 'Новости'}, {text: 'Открытие'}]"
+                    :items="[{text: 'Новости'}, {text: 'Сайтовые новости'}]"
                     large
                 ></v-breadcrumbs>
                 <v-spacer></v-spacer>
-                <span>//Поиск</span>
+                <Search/>
             </v-row>
         </v-col>
-        <v-col sm="2">
+        <v-col sm="2" class="phone_block">
+            <!-- <v-btn text>Обратный звонок</v-btn> -->
             <a href="tel:8495290-31-21">8 (495) 290-31-21</a>
-            <v-btn link>Обратный звонок</v-btn>
         </v-col>
 
         <!--  v-scroll="onScroll" :extension-height="(!isScrolled)?'200px':0" height="fit-content" -->
@@ -42,8 +42,8 @@
         <!-- hide on scroll -->
         <template #extension>
             <router-link :to="{ name: 'Home' }" class="col-sm-2">
-                    <v-img src="https://picsum.photos/300/140"></v-img>
-                    <h1>Паладин</h1>
+                <v-img src="https://picsum.photos/300/140"></v-img>
+                <h1>Паладин</h1>
             </router-link>
 
             <v-btn :to="{ name: 'Home' }" class="menu__btn">
@@ -64,9 +64,12 @@
 
             <v-spacer></v-spacer>
 
-        <v-btn :to="{ name: 'Order' }" class="menu__btn">
-            Заказ
-        </v-btn>
+        <v-col sm="2" style="text-align: center">
+            <v-btn :to="{ name: 'Order' }">
+                Заказ
+            </v-btn>
+        </v-col>
+        
             <!-- <v-slide-y-transition> -->
                 <!-- <v-row v-show="!isScrolled"> -->
                     
@@ -77,8 +80,11 @@
 </template>
 
 <script>
+import Search from "./Search";
+
 export default {
     name: 'Menu',
+    components: {Search,},
     data: () => ({
       isScrolled: false,
     }),
@@ -109,10 +115,21 @@ export default {
 .menu__btn {
     margin: 20px;
 }
+
+h1, .description, .phone_block {
+    text-align: center;
+}
+.router-link-active {
+    color: inherit;
+    text-decoration: none !important;
+}
 .description {
     display: block;
     height: 100%;
     width: 100%;
     font-size: 12px;
+}
+.phone_block>* {
+    font-size: 0.7em;
 }
 </style>
