@@ -1,7 +1,27 @@
 <template>
-    <v-app-bar app elevate-on-scroll v-scroll="onScroll" extension-height="fit-content" height="fit-content">
+    <v-app-bar app elevate-on-scroll hide-on-scroll extension-height="120px">
+        <v-col sm="2" style="max-height: 100%; overflow: hidden;">
+            <router-link :to="{ name: 'Home' }"  class="description">
+                <strong>оперативная полиграфия</strong>
+            </router-link>
+        </v-col>
+        <v-col>
+            <v-row>
+                <v-breadcrumbs
+                    :items="[{text: 'Главная'}, {text: 'Новости'}, {text: 'Открытие'}]"
+                    large
+                ></v-breadcrumbs>
+                <v-spacer></v-spacer>
+                <span>//Поиск</span>
+            </v-row>
+        </v-col>
+        <v-col sm="2">
+            <a href="tel:8495290-31-21">8 (495) 290-31-21</a>
+            <v-btn link>Обратный звонок</v-btn>
+        </v-col>
 
-        <!--  shrink-on-scroll height="300px"  -->
+        <!--  v-scroll="onScroll" :extension-height="(!isScrolled)?'200px':0" height="fit-content" -->
+        <!-- shrink-on-scroll height="300px" -->
 
         <!-- {{ window.pageYOffset }} -->
         <!-- v-scroll="onScroll" -->
@@ -9,26 +29,6 @@
         <!-- <v-app-bar-nav-icon @click="$parent.$parent.$refs.nav.burger_click()"></v-app-bar-nav-icon> -->
 
         <!-- <v-app-bar-title>Test</v-app-bar-title> -->
-        <router-link :to="{ name: 'Home' }" class="col-sm-2">
-                <v-img src="https://picsum.photos/300/140"></v-img>
-                
-        </router-link>
-
-        <v-btn :to="{ name: 'Home' }" class="menu__btn">
-            Главная
-        </v-btn>
-
-        <v-btn :to="{ name: 'Services' }" class="menu__btn">
-            Услуги
-        </v-btn>
-
-        <v-btn :to="{ name: 'Contacts' }" class="menu__btn">
-            Контакты
-        </v-btn>
-
-        <v-btn :to="{ name: 'About' }" class="menu__btn">
-            О нас
-        </v-btn>
 
         <!-- <v-tooltip bottom>
             <template v-slot:activator="{ on, attrs }">
@@ -39,38 +39,39 @@
             <span>About</span>
         </v-tooltip> -->
 
-        <v-spacer></v-spacer>
+        <!-- hide on scroll -->
+        <template #extension>
+            <router-link :to="{ name: 'Home' }" class="col-sm-2">
+                    <v-img src="https://picsum.photos/300/140"></v-img>
+                    <h1>Паладин</h1>
+            </router-link>
+
+            <v-btn :to="{ name: 'Home' }" class="menu__btn">
+                Главная
+            </v-btn>
+
+            <v-btn :to="{ name: 'Services' }" class="menu__btn">
+                Услуги
+            </v-btn>
+
+            <v-btn :to="{ name: 'Contacts' }" class="menu__btn">
+                Контакты
+            </v-btn>
+
+            <v-btn :to="{ name: 'About' }" class="menu__btn">
+                О нас
+            </v-btn>
+
+            <v-spacer></v-spacer>
 
         <v-btn :to="{ name: 'Order' }" class="menu__btn">
             Заказ
         </v-btn>
-
-        <!-- hide on scroll -->
-        <template #extension>
-            <v-slide-y-transition>
-                <v-row v-show="!isScrolled">
-                    <v-col sm="2">
-                        <router-link :to="{ name: 'Home' }">
-                                <h1>Паладин</h1>
-                                <strong>оперативная полиграфия</strong>
-                        </router-link>
-                    </v-col>
-                    <v-col>
-                        <v-row>
-                            <v-breadcrumbs
-                                :items="[{text: 'Главная'}, {text: 'Новости'}, {text: 'Открытие'}]"
-                                large
-                            ></v-breadcrumbs>
-                            <v-spacer></v-spacer>
-                            <span>//Поиск</span>
-                        </v-row>
-                    </v-col>
-                    <v-col sm="2">
-                        <a href="tel:8495290-31-21">8 (495) 290-31-21</a>
-                        <v-btn link>Обратный звонок</v-btn>
-                    </v-col>
-                </v-row>
-            </v-slide-y-transition>
+            <!-- <v-slide-y-transition> -->
+                <!-- <v-row v-show="!isScrolled"> -->
+                    
+                <!-- </v-row> -->
+            <!-- </v-slide-y-transition> -->
         </template>
     </v-app-bar>
 </template>
@@ -98,14 +99,20 @@ export default {
 </script>
 
 <style>
-.v-toolbar__extension, .v-toolbar__extension>* {
+/* .v-toolbar__extension, .v-toolbar__extension>* {
     align-items: flex-end;
-    transition: height 2s ease-in-out;
+    transition: height 0.35s ease-in-out;
 }
 .v-toolbar__content {
     align-items: center;
-}
+} */
 .menu__btn {
     margin: 20px;
+}
+.description {
+    display: block;
+    height: 100%;
+    width: 100%;
+    font-size: 12px;
 }
 </style>
