@@ -1,24 +1,39 @@
 <template>
     <v-app-bar app elevate-on-scroll hide-on-scroll extension-height="140px">
-        <v-col sm="2" style="max-height: 100%; overflow: hidden;">
+        <!-- <v-col sm="2" style="max-height: 100%; overflow: hidden;">
             <router-link :to="{ name: 'Home' }"  class="description">
                 <strong>оперативная полиграфия</strong>
             </router-link>
         </v-col>
         <v-col>
-            <v-row>
+            <v-row> -->
                 <v-breadcrumbs
                     :items="[{text: 'Новости'}, {text: 'Сайтовые новости'}]"
                     large
                 ></v-breadcrumbs>
                 <v-spacer></v-spacer>
-                <Search/>
-            </v-row>
-        </v-col>
-        <v-col sm="2" class="phone_block">
+                <Search style="width: 100px;" v-show="$vuetify.breakpoint.smAndUp" :search_value.sync="search_value"></Search>
+                <v-btn icon v-show="$vuetify.breakpoint.xsOnly" @click="openSearch=true">
+                    <v-icon>mdi-magnify</v-icon>
+                </v-btn>
+                <v-dialog
+                    v-model="openSearch"
+                    hide-overlay
+                    transition="slide-y-transition"
+                    :value="$vuetify.breakpoint.xs"
+                >
+                    <v-card v-show="$vuetify.breakpoint.xsOnly">
+                        <v-container>
+                        <Search autofocus :search_value.sync="search_value"></Search>
+                        </v-container>
+                    </v-card>
+                </v-dialog>
+            <!-- </v-row> -->
+        <!-- </v-col> -->
+        <!-- <v-col sm="2" class="phone_block"> -->
             <!-- <v-btn text>Обратный звонок</v-btn> -->
-            <a href="tel:8495290-31-21">8 (495) 290-31-21</a>
-        </v-col>
+            <!-- <a href="tel:8495290-31-21">8 (495) 290-31-21</a> -->
+        <!-- </v-col> -->
 
         <!--  v-scroll="onScroll" :extension-height="(!isScrolled)?'200px':0" height="fit-content" -->
         <!-- shrink-on-scroll height="300px" -->
@@ -87,7 +102,16 @@ export default {
     components: {Search,},
     data: () => ({
       isScrolled: false,
+      openSearch: false,
+    search_value: '',
     }),
+    mounted() {
+        if (this.$router.currentRoute.name=='Search') {
+            if (this.$route.query['query']!=this.search_value)
+                this.search_value = this.$route.query['query'];
+        }
+        else this.search_value = '';
+    },
     // computed: {
     //     // геттер вычисляемого значения
     //     isScrolled: function () {
@@ -104,7 +128,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 /* .v-toolbar__extension, .v-toolbar__extension>* {
     align-items: flex-end;
     transition: height 0.35s ease-in-out;
@@ -131,5 +155,9 @@ h1, .description, .phone_block {
 }
 .phone_block>* {
     font-size: 0.7em;
+}
+
+.v-dialog__content {
+    align-items: start;
 }
 </style>

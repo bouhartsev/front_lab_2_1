@@ -2,9 +2,11 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 
 import Home from "../views/Home.vue";
-// import About from "../views/About.vue";
+import About from "../views/About.vue";
 // import Search from "../views/Search.vue";
 
+import Services from "../views/Services/Services.vue";
+import Service from "../views/Services/Service.vue";
 // import Tracks from "../views/Tracks.vue";
 // import Track from "../views/Track.vue";
 // import Artists from "../views/Artists.vue";
@@ -29,35 +31,35 @@ const routes = [
             title: 'Главная',
         }
     },
-    // {
-    //     path: "/about",
-    //     name: "About",
-    //     component: About,
-    // },
+    {
+        path: "/about",
+        name: "About",
+        component: About,
+    },
     // {
     //     path: "/search",
     //     name: "Search",
     //     component: Search,
     // },
 
-    // {
-    //     path: "/tracks",
-    //     component: {
-    //         render: (h) => h("router-view"),
-    //     },
-    //     children: [
-    //         {
-    //             path:"",
-    //             name: "Tracks",
-    //             component: Tracks,
-    //         },
-    //         {
-    //             path: "/tracks/:id",
-    //             name: "Track",
-    //             component: Track,
-    //         },
-    //     ]
-    // },
+    {
+        path: "/services",
+        component: {
+            render: (h) => h("router-view"),
+        },
+        children: [
+            {
+                path:"",
+                name: "Services",
+                component: Services,
+            },
+            {
+                path: "/services/:id",
+                name: "Service",
+                component: Service,
+            },
+        ]
+    },
 
     // {
     //     path: "/page-not-found",
