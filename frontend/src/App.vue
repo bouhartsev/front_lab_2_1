@@ -21,6 +21,9 @@ export default {
   data: () => ({
     //
   }),
+  created() {
+    this.$store.dispatch('GET_SERVICES', 'action GET_SERVICES');
+  },
 };
 </script>
 

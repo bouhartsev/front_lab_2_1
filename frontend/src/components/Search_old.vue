@@ -1,24 +1,26 @@
+  
 <template>
     <v-text-field
         hide-details
-        placeholder="Поиск"
+        label="Search"
         @keyup.enter="search()"
         class="search_field"
+        :autofocus="autofocus"
+        :value="search_value"
+        @input="updateValue($event)"
         clearable
-        prepend-inner-icon="mdi-magnify"
-        @click:prepend-inner="search()"
-        v-model="search_value"
     ></v-text-field>
-    <!-- label="Поиск"
-        solo -->
+<!--    append-outer-icon="mdi-magnify"-->
+<!--    @click:append-outer="search()"-->
 </template>
 
 <script>
 export default {
     name: "Search",
-    data: () => ({
-      search_value: '',
-    }),
+    props: {
+        autofocus: Boolean,
+        search_value: String,
+    },
     methods: {
         search: function() {
             if (this.search_value!='') {
@@ -26,6 +28,15 @@ export default {
                     this.$router.push({path: '/search', query: {query: this.search_value}});
             }
         },
+        updateValue: function (value) {
+            this.$emit('update:search_value', value);
+        }
     },
 }
 </script>
+
+<style scoped>
+.search_field {
+    margin: 1em !important;
+}
+</style>

@@ -57,11 +57,11 @@
         <!-- hide on scroll -->
         <template #extension>
             <router-link :to="{ name: 'Home' }" class="col-sm-2">
-                <v-img src="https://picsum.photos/300/140"></v-img>
+                <v-img src="https://picsum.photos/300/140" aspect-ratio="2"></v-img>
                 <h1>Паладин</h1>
             </router-link>
 
-            <v-btn :to="{ name: 'Home' }" class="menu__btn">
+            <v-btn :to="{ name: 'Home' }" class="menu__btn" exact>
                 Главная
             </v-btn>
 
@@ -69,11 +69,11 @@
                 Услуги
             </v-btn>
 
-            <v-btn :to="{ name: 'Contacts' }" class="menu__btn">
+            <v-btn :to="{ name: 'Contacts' }" class="menu__btn" exact>
                 Контакты
             </v-btn>
 
-            <v-btn :to="{ name: 'About' }" class="menu__btn">
+            <v-btn :to="{ name: 'About' }" class="menu__btn" exact>
                 О нас
             </v-btn>
 
