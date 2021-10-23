@@ -1,12 +1,12 @@
 <template>
     <v-app-bar app elevate-on-scroll hide-on-scroll extension-height="140px">
-        <!-- <v-col sm="2" style="max-height: 100%; overflow: hidden;">
+        <v-col sm="2" style="max-height: 100%; overflow: hidden;">
             <router-link :to="{ name: 'Home' }"  class="description">
                 <strong>оперативная полиграфия</strong>
             </router-link>
         </v-col>
         <v-col>
-            <v-row> -->
+            <v-row>
                 <v-breadcrumbs
                     :items="[{text: 'Новости'}, {text: 'Сайтовые новости'}]"
                     large
@@ -28,12 +28,12 @@
                         </v-container>
                     </v-card>
                 </v-dialog>
-            <!-- </v-row> -->
-        <!-- </v-col> -->
-        <!-- <v-col sm="2" class="phone_block"> -->
-            <!-- <v-btn text>Обратный звонок</v-btn> -->
-            <!-- <a href="tel:8495290-31-21">8 (495) 290-31-21</a> -->
-        <!-- </v-col> -->
+            </v-row>
+        </v-col>
+        <v-col sm="2" class="phone_block">
+            <v-btn text>Обратный звонок</v-btn>
+            <a href="tel:8495290-31-21">8 (495) 290-31-21</a>
+        </v-col>
 
         <!--  v-scroll="onScroll" :extension-height="(!isScrolled)?'200px':0" height="fit-content" -->
         <!-- shrink-on-scroll height="300px" -->
