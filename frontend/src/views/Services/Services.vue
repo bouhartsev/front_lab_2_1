@@ -90,6 +90,10 @@ export default {
 </script>
 
 <style>
+.v-card__text p {
+  margin: 0;
+}
+
 .v-card__price {
 	position: relative;
 

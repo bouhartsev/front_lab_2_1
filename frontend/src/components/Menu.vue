@@ -8,7 +8,7 @@
         <v-col>
             <v-row>
                 <v-breadcrumbs
-                    :items="[{text: 'Новости'}, {text: 'Сайтовые новости'}]"
+                    :items="[{text: 'Какие-то'}, {text: 'Хлебные крошки'}]"
                     large
                 ></v-breadcrumbs>
                 <v-spacer></v-spacer>
