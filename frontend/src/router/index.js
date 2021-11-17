@@ -3,6 +3,8 @@ import VueRouter from "vue-router";
 
 import Home from "../views/Home.vue";
 import About from "../views/About.vue";
+import Contacts from "../views/Contacts.vue";
+import Order from "../views/Order.vue";
 // import Search from "../views/Search.vue";
 
 import Services from "../views/Services/Services.vue";
@@ -35,6 +37,16 @@ const routes = [
         path: "/about",
         name: "About",
         component: About,
+    },
+    {
+        path: "/contacts",
+        name: "Contacts",
+        component: Contacts,
+    },
+    {
+        path: "/order",
+        name: "Order",
+        component: Order,
     },
     // {
     //     path: "/search",

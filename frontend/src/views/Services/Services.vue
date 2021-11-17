@@ -90,6 +90,15 @@ export default {
 </script>
 
 <style>
+
+.v-card__title {
+  font-size: 1rem;
+}
+
+.v-card__subtitle, .v-card__text {
+  font-size: 0.5rem;
+}
+
 .v-card__text p {
   margin: 0;
 }

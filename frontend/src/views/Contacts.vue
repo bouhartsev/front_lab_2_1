@@ -1,10 +1,10 @@
 <template>
-  <div>Temp about</div>
+  <div>Temp contacts</div>
 </template>
 
 <script>
 export default {
-    name: "About",
+
 }
 </script>
 
