@@ -31,8 +31,9 @@
             </v-row>
         </v-col>
         <v-col sm="2" class="phone_block">
-            <v-btn text>Обратный звонок</v-btn>
             <a href="tel:8495290-31-21">8 (495) 290-31-21</a>
+            <br>
+            <a href="#/" class="btnCall">Обратный звонок</a>
         </v-col>
 
         <!--  v-scroll="onScroll" :extension-height="(!isScrolled)?'200px':0" height="fit-content" -->
@@ -61,26 +62,26 @@
                 <h1>Паладин</h1>
             </router-link>
 
-            <v-btn :to="{ name: 'Home' }" class="menu__btn" exact>
+            <v-btn :to="{ name: 'Home' }" class="menu__btn" exact x-large>
                 Главная
             </v-btn>
 
-            <v-btn :to="{ name: 'Services' }" class="menu__btn">
+            <v-btn :to="{ name: 'Services' }" class="menu__btn" x-large>
                 Услуги
             </v-btn>
 
-            <v-btn :to="{ name: 'Contacts' }" class="menu__btn" exact>
+            <v-btn :to="{ name: 'Contacts' }" class="menu__btn" exact x-large>
                 Контакты
             </v-btn>
 
-            <v-btn :to="{ name: 'About' }" class="menu__btn" exact>
+            <v-btn :to="{ name: 'About' }" class="menu__btn" exact x-large>
                 О нас
             </v-btn>
 
             <v-spacer></v-spacer>
 
         <v-col sm="2" style="text-align: center">
-            <v-btn :to="{ name: 'Order' }">
+            <v-btn :to="{ name: 'Order' }" x-large>
                 Заказ
             </v-btn>
         </v-col>
@@ -136,6 +137,11 @@ export default {
 .v-toolbar__content {
     align-items: center;
 } */
+.btnCall {
+    color:inherit;
+    text-decoration: inherit;
+}
+
 .menu__btn {
     margin: 20px;
 }

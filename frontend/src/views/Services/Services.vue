@@ -7,7 +7,7 @@
           xs12
           sm6
           md4
-          class="px-9 py-2"
+          class="px-2 py-2"
           style="box-sizing: border-box"
           v-for="(item, i) in services"
           :key="i"
@@ -40,7 +40,7 @@
 				<v-card-actions>
 					<span :data-price-old="item.price_old" data-currency="руб." class="v-card__price">{{ item.price }}</span>
 					<v-spacer></v-spacer>
-					<v-btn to="/order/">Добавить в заказ</v-btn>
+					<v-btn to="/order/" class="btnToOrder">Добавить в заказ</v-btn>
 				</v-card-actions>
               <!--for tracks-->
               <!-- <v-card-subtitle v-if="item.artistsservices"
@@ -92,11 +92,12 @@ export default {
 <style>
 
 .v-card__title {
-  font-size: 1rem;
+  font-size: 1.1rem;
+  word-break: keep-all;
 }
 
 .v-card__subtitle, .v-card__text {
-  font-size: 0.5rem;
+  font-size: 0.7rem;
 }
 
 .v-card__text p {
@@ -122,5 +123,15 @@ export default {
 }
 .v-card__price::after {
 	content: ' ' attr(data-currency);
+}
+
+.btnToOrder {
+  max-width: 40%;
+}
+
+.btnToOrder * {
+  font-size: 0.5rem;
+  white-space: initial;
+  text-align: center;
 }
 </style>
