@@ -10,7 +10,7 @@ use App\Models\Service;
 class ServiceController extends Controller
 {
     public function index(){
-        $services = service::paginate(10);
+        $services = Service::paginate(10);
         return view('services.index',['services'=> $services]);
     }
 
@@ -22,32 +22,34 @@ class ServiceController extends Controller
        
         $request->validate([
             'name' => 'required',
-            'desc' => 'required'
+            'description' => 'required',
+            'price' => 'required'
         ]);
 
-        if ($id == null) $service = new services();
+        if ($id == null) $service = new Service();
         else $service = service::findOrFail($id);
         $service->name = request('name');
-        $service->short_text = request('desc');
+        $service->desc = request('description');
+        $service->price = request('price');
         $service->save();
         return redirect('/services/'.$service->$id);
     }
 
-    // public function view($id){
-    //     $service = service::findOrFail($id);
+    public function view($id){
+        $service = Service::findOrFail($id);
 
-    //     $comments = serviceComment::where('service_id', $id)->paginate(3);
+        // $comments = serviceComment::where('service_id', $id)->paginate(3);
 
-    //     return view('services.view',['service'=>$service, 'comments'=>$comments]);
-    // }
+        return view('services.view',['service'=>$service]); //, 'comments'=>$comments
+    }
 
-    // public function update($id){
-    //     $service = service::findOrFail($id);
-    //     return view('services.update', ['service'=>$service]);
-    // }
+    public function update($id){
+        $service = Service::findOrFail($id);
+        return view('Service.edit', ['service'=>$service]);
+    }
 
     public function destroy($id){
-        services::findOrFail($id)->delete();
+        Service::findOrFail($id)->delete();
         return redirect ('/services');
     }
 }
