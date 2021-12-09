@@ -3,7 +3,9 @@
     <Menu />
 
     <v-main>
-      <router-view />
+      <v-container>
+        <router-view />
+      </v-container>
     </v-main>
   </v-app>
 </template>
@@ -21,6 +23,9 @@ export default {
   data: () => ({
     //
   }),
+  created() {
+    this.$store.dispatch('GET_SERVICES', 'action GET_SERVICES');
+  },
 };
 </script>
 
