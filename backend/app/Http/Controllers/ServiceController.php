@@ -45,7 +45,7 @@ class ServiceController extends Controller
 
     public function update($id){
         $service = Service::findOrFail($id);
-        return view('Service.edit', ['service'=>$service]);
+        return view('services.edit', ['service'=>$service]);
     }
 
     public function destroy($id){

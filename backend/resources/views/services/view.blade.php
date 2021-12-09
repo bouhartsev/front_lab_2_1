@@ -5,13 +5,15 @@
     <p>{{$service->desc}}</p>
     <br/>
 
-    <!-- @foreach($comments as $comment)
+    {{-- 
+    <div>
+    @foreach($comments as $comment)
         <b>{{$comment->title}}</b>
         <p>{{$comment->comment}}</p>
     @endforeach
     <br/>
     {{ $comments ->links() }}
-    <br> -->
+    </div> --}}
 
     <a class="btn btn-secondary" href="/services/{{$service->id}}/edit">Редактировать</a>
     <a class="btn btn-primary" href="/services/{{$service->id}}/delete">Удалить</a>
