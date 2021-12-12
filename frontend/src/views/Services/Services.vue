@@ -128,6 +128,10 @@ export default {
 .btnToOrder {
   max-width: 40%;
 }
+.btnToOrder>* {
+  width: 100%;
+  white-space: break-spaces;
+}
 
 .btnToOrder * {
   font-size: 0.5rem;
