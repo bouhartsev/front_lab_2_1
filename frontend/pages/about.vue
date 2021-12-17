@@ -1,17 +1,20 @@
 <template>
-  <div>Temp about</div>
+  <div>
+    Temp about
+
+    <AboutTypo />
+  </div>
 </template>
 
 <script>
 export default {
-    head() {
+  head() {
     return {
       title: "О нас",
     };
   },
-}
+};
 </script>
 
 <style>
-
 </style>
