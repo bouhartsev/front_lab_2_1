@@ -9,13 +9,22 @@
 import axios from 'axios';
 
 const state = () => ({
-  services: null,
+  services: [],
 });
 
 const getters = {
   services: (state) => {
     console.log('get services', state.services);
     return state.services;
+  },
+  serviceById: (state) => {
+    return (id) => {
+      return state.services.find(x => {x.id == id});
+    };
+    
+  },
+  serviceBySlug: (state, slug) => {
+    return state.services.find(x => x.slug == slug);
   },
 };
 
@@ -34,6 +43,10 @@ const actions = {
     let {data} = await axios.get('/api/services.json');
     context.commit('SET_SERVICES', data);
     console.log(payload); //temp - never used
+  },
+  GET_SERVICE: async (context, payload) => {
+    // one service
+    console.log(context, payload); //temp - never used
   },
 
   // SAVE_SERVICE: async (context, payload) => {
