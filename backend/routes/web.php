@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\ServiceCommentController;
+use App\Http\Controllers\AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,15 +25,19 @@ Route::get('/', function () {
     return view('main');
 });
 
-// Route::group(['prefix'=>'/services'], function(){ //, 'middleware'=>'auth'
-Route::get('/services', [ServiceController::class,'index']);
-Route::get('/services/create', [ServiceController::class,'create']);
-Route::post('/services', [ServiceController::class, 'store']);
-Route::get('/services/{id}', [ServiceController::class,'view']);
-Route::get('/services/{id}/edit', [ServiceController::class,'update']);
-Route::post('/services/{id}/update', [ServiceController::class,'store']);
-Route::get('/services/{id}/delete', [ServiceController::class,'destroy']);
-// });
+Route::group(['prefix'=>'/services', 'middleware'=>'auth'], function(){ //
+    Route::get('', [ServiceController::class,'index']);
+    Route::get('/create', [ServiceController::class,'create']);
+    Route::post('', [ServiceController::class, 'store']);
+    Route::get('/{id}', [ServiceController::class,'view']);
+    Route::get('/{id}/edit', [ServiceController::class,'update']);
+    Route::post('/{id}/update', [ServiceController::class,'store']);
+    Route::get('/{id}/delete', [ServiceController::class,'destroy']);
+    Route::post('/{id}/comment', [ServiceCommentController::class, 'store']);
+});
 
-Route::post('/services/{id}/comment', [ServiceCommentController::class, 'store']);
-// Route::post('/article-comments', [ArticleCommentController::class, 'store']);
+Route::get('/login', [AuthController::class, 'index'])->name('login');
+Route::get('/registration', [AuthController::class, 'registration']);
+Route::get('/logout', [AuthController::class, 'signOut']);
+Route::post('/custom-registration', [AuthController::class, 'customRegistration']);
+Route::post('/custom-login', [AuthController::class, 'customLogin']);
