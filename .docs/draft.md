@@ -2,9 +2,9 @@
 
 ## Technologies
 
-Vue, Vuetify, Vuex
+Nuxt (Vue, Vuex), Vuetify,
 
-Laravel, ?
+Laravel, ? \[Mailing\]
 
 ## Fonts
 
