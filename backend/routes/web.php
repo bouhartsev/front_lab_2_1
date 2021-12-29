@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\ServiceCommentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,12 +24,15 @@ Route::get('/', function () {
     return view('main');
 });
 
+// Route::group(['prefix'=>'/services'], function(){ //, 'middleware'=>'auth'
 Route::get('/services', [ServiceController::class,'index']);
 Route::get('/services/create', [ServiceController::class,'create']);
 Route::post('/services', [ServiceController::class, 'store']);
 Route::get('/services/{id}', [ServiceController::class,'view']);
 Route::get('/services/{id}/edit', [ServiceController::class,'update']);
-Route::post('/services/{id}/edit', [ServiceController::class,'store']);
+Route::post('/services/{id}/update', [ServiceController::class,'store']);
 Route::get('/services/{id}/delete', [ServiceController::class,'destroy']);
-// Route::post('/articles/{id}/comment', [ArticleCommentsController::class, 'store']);
+// });
+
+Route::post('/services/{id}/comment', [ServiceCommentController::class, 'store']);
 // Route::post('/article-comments', [ArticleCommentController::class, 'store']);

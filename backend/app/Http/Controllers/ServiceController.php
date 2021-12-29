@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Models\Service;
-// use App\Models\ServiceComment;
+use App\Models\ServiceComment;
 
 class ServiceController extends Controller
 {
@@ -38,9 +38,9 @@ class ServiceController extends Controller
     public function view($id){
         $service = Service::findOrFail($id);
 
-        // $comments = serviceComment::where('service_id', $id)->paginate(3);
+        $comments = serviceComment::where('service_id', $id)->paginate(3);
 
-        return view('services.view',['service'=>$service]); //, 'comments'=>$comments
+        return view('services.view',['service'=>$service, 'comments'=>$comments]);
     }
 
     public function update($id){
