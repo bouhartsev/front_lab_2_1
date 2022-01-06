@@ -1,7 +1,7 @@
 [
     {
         "id": 1,
-        "image_full": "/src/img/2.webp",
+        "image_full": ["/src/img/2.webp", "/src/img/2.webp"],
         "image_preview": "/src/img/2_preview.jpeg",
         "name": "What is Lorem Ipsum? 1",
         "shortDesc": "Lorem Ipsum is simply dummy text of the printing and typesetting industry",

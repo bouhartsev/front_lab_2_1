@@ -19,12 +19,13 @@ const getters = {
   },
   serviceById: (state) => {
     return (id) => {
-      return state.services.find(x => {x.id == id});
+      return state.services.find(x => x.id == id);
     };
-    
   },
-  serviceBySlug: (state, slug) => {
-    return state.services.find(x => x.slug == slug);
+  serviceBySlug: (state) => {
+    return (slug) => {
+      return state.services.find(x => x.slug == slug);
+    };
   },
 };
 
@@ -46,7 +47,11 @@ const actions = {
   },
   GET_SERVICE: async (context, payload) => {
     // one service
-    console.log(context, payload); //temp - never used
+
+    // !!!! temp - from services
+    let {data} = await axios.get('/api/services.json');
+    context.commit('SET_SERVICES', data);
+    console.log(payload);
   },
 
   // SAVE_SERVICE: async (context, payload) => {
