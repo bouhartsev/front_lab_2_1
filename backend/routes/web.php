@@ -25,19 +25,23 @@ Route::get('/', function () {
     return view('main');
 });
 
-Route::group(['prefix'=>'/services', 'middleware'=>'auth'], function(){ //
-    Route::get('', [ServiceController::class,'index']);
-    Route::get('/create', [ServiceController::class,'create']);
-    Route::post('', [ServiceController::class, 'store']);
-    Route::get('/{id}', [ServiceController::class,'view']);
-    Route::get('/{id}/edit', [ServiceController::class,'update']);
-    Route::post('/{id}/update', [ServiceController::class,'store']);
-    Route::get('/{id}/delete', [ServiceController::class,'destroy']);
-    Route::post('/{id}/comment', [ServiceCommentController::class, 'store']);
+Route::get('/listen', function () {
+    return view('listen');
 });
 
-Route::get('/login', [AuthController::class, 'index'])->name('login');
-Route::get('/registration', [AuthController::class, 'registration']);
-Route::get('/logout', [AuthController::class, 'signOut']);
-Route::post('/custom-registration', [AuthController::class, 'customRegistration']);
-Route::post('/custom-login', [AuthController::class, 'customLogin']);
+// Route::group(['prefix'=>'/services', 'middleware'=>'auth'], function(){ //
+//     Route::get('', [ServiceController::class,'index']);
+//     Route::get('/create', [ServiceController::class,'create']);
+//     Route::post('', [ServiceController::class, 'store']);
+//     Route::get('/{id}', [ServiceController::class,'view']);
+//     Route::get('/{id}/edit', [ServiceController::class,'update']);
+//     Route::post('/{id}/update', [ServiceController::class,'store']);
+//     Route::get('/{id}/delete', [ServiceController::class,'destroy']);
+//     Route::post('/{id}/comment', [ServiceCommentController::class, 'store']);
+// });
+
+// Route::get('/login', [AuthController::class, 'index'])->name('login');
+// Route::get('/registration', [AuthController::class, 'registration']);
+// Route::get('/logout', [AuthController::class, 'signOut']);
+// Route::post('/custom-registration', [AuthController::class, 'customRegistration']);
+// Route::post('/custom-login', [AuthController::class, 'customLogin']);

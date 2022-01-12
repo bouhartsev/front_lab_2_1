@@ -19,6 +19,7 @@ class CreateServiceCommentsTable extends Migration
             $table->integer('mark');
             $table->text('comment');
             $table->foreignId('service_id');
+            $table->integer('accept')->default(0);
         });
     }
 

@@ -10,7 +10,7 @@ class Service extends Model
     use HasFactory;
 
     public function comments(){
-        return $this->hasMany(ServiceComment::class, 'article_id');
+        return $this->hasMany(ServiceComment::class, 'service_id');
     }
     
 }

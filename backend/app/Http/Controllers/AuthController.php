@@ -10,12 +10,21 @@ use App\Models\User;
 
 class AuthController extends Controller
 {
-    public function index(){
-        return view('login');
-    }
+    // public function index(){
+    //     return view('login');
+    // }
+    
+    // public function signOut(){
+    //     Session::flush();
+    //     Auth::logout();
 
-    public function customLogin(Request $request){
+    //     return redirect("/");
+    // }
 
+    ///
+
+    public function login(Request $request){
+        
         $request->validate([
             'email' => 'required',
             'password' => 'required'
@@ -23,43 +32,50 @@ class AuthController extends Controller
 
         $credentials = $request->only('email', 'password');
         if (Auth::attempt($credentials)){
-            return redirect('services')->withSuccess('Вход выполнен');
+            $user = User::where('email', $request->input('email'))->first();
+            $token =$user->createToken('usertoken')->plainTextToken;
+            $response = [
+                'user' => $user,
+                'token' =>$token
+            ];
+            return response($response, 201);
         }
 
-        return redirect('login')->withSuccess('Авторизация не пройдена');
+        return response([
+            'message' => 'Bad login'
+        ], 401);
     }
 
-    public function registration(){
-        return view('registration');
-    }
-
-    public function customRegistration(Request $request){
+    public function registration(Request $request){
 
         $request->validate([
             'name'=>'required',
             'email'=>'required|email|unique:users',
-            // 'email' => 'unique:App\Models\User,email'
             'password'=>'required|min:6'
         ]);
 
-        $user = new User();
-        $user->name = $request->input('name');
-        $user->email = $request->input('email');
-        $user->password = Hash::make($request->input('password'));
-        $user->save();
+        $user = User::create([
+            'name' => $request->input('name'),
+            'email' => $request->input('email'),
+            'password' => Hash::make($request->input('password')),
+            'role_id' => '1' // customer
+        ]);
 
-        $credentials = $request->only('email', 'password');
-        if (Auth::attempt($credentials)){
-            return redirect('services')->withSuccess('Вход выполнен');
-        }
+        return login($request);
 
-        return redirect()->route('login');
+        // $token =$user->createToken('usertoken')->plainTextToken;
+        // $response = [
+        //     'user' => $user,
+        //     'token' =>$token
+        // ];
+        // return response($response, 201);
 
     }
     public function signOut(){
-        Session::flush();
-        Auth::logout();
+        auth()->user()->tokens()->delete();
 
-        return redirect("/");
+        return response([
+            'message' => 'Logged out'
+        ]);
     }
 }
