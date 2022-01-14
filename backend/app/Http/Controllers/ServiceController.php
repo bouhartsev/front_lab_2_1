@@ -2,7 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Http\Request;
+use App\Models\User;
+use App\Models\Role;
+use App\Models\Service;
+use App\Models\ServiceComment;
+use App\Notifications\ServiceNotification;
+use Illuminate\Support\Facades\Notification;
+use Illuminate\Support\Facades\Cache;
+use App\Events\CreateChannelEvent;
 
 class ServiceController extends Controller
 {
@@ -40,16 +50,18 @@ class ServiceController extends Controller
      */
     public function store(Request $request)
     {
-        // $request->validate([
-        //     'name' => 'required',
-        //     'description' => 'required',
-        //     'price' => 'required'
-        // ]);
+        $request->validate([
+            'name' => 'required',
+            'slug' => 'required',
+            'description' => 'required',
+            'price' => 'required'
+        ]);
 
         // if ($id == null) $service = new Service();
         // else $service = service::findOrFail($id);
         $service = new Service();
         $service->name = request('name');
+        $service->slug = request('slug');
         $service->desc = request('description');
         $service->price = request('price');
         $service->save();
@@ -112,6 +124,7 @@ class ServiceController extends Controller
     {
         $service = Service::findOrFail($id);
         $service->name = request('name');
+        $article->slug = request('slug');
         $service->desc = request('description');
         $service->price = request('price');
         $service->save();

@@ -29,8 +29,9 @@ class AdminMail extends Mailable
      */
     public function build()
     {
-        return $this->from('programmer@bouhartsev.top') // Заменить на адрес с доменом сайта
+        return $this->from(env('MAIL_FROM_ADDRESS', 'paladin@example.com'), env('MAIL_FROM_NAME', 'Paladin')) // Заменить на адрес с доменом сайта
                     ->to(env("ADMIN_EMAIL")) // Сделать рассылку для админов
+                    ->subject('Комментарий Paladin')
                     ->with(['text' => $this->string])
                     ->view('mails.comment-mail');
     }

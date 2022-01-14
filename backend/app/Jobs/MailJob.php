@@ -10,7 +10,7 @@ use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 
 use Illuminate\Support\Facades\Mail;
-use App\Mail\Admin;
+use App\Mail\AdminMail;
 use App\Models\Service;
 
 class MailJob implements ShouldQueue
@@ -36,7 +36,7 @@ class MailJob implements ShouldQueue
      */
     public function handle()
     {
-        $adminMail = new AdminMail('Cтатья, для которой создан комментарий: "'.$this->article->name.'"');
+        $adminMail = new AdminMail('Cтатья, для которой создан комментарий: "'.$this->service->name.'"');
         Mail::send($adminMail);
     }
 }

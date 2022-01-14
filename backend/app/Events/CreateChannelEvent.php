@@ -10,9 +10,11 @@ use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 
-class CreateChannelEvent
+class CreateChannelEvent implements ShouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
+
+    
 
     /**
      * Create a new event instance.
@@ -31,6 +33,6 @@ class CreateChannelEvent
      */
     public function broadcastOn()
     {
-        return new PrivateChannel('notify'); // возможно, нужно убрать Private
+        return new Channel('notify'); // возможно, нужно убрать Private
     }
 }

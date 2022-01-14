@@ -61,14 +61,14 @@ class AuthController extends Controller
             'role_id' => '1' // customer
         ]);
 
-        return login($request);
+        // return login($request);
 
-        // $token =$user->createToken('usertoken')->plainTextToken;
-        // $response = [
-        //     'user' => $user,
-        //     'token' =>$token
-        // ];
-        // return response($response, 201);
+        $token =$user->createToken('usertoken')->plainTextToken;
+        $response = [
+            'user' => $user,
+            'token' =>$token
+        ];
+        return response($response, 201);
 
     }
     public function signOut(){

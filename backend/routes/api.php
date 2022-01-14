@@ -26,7 +26,7 @@ Route::post('/login', [AuthController::class, 'login'])->name('login');
 
 //Private route
 Route::middleware('auth:sanctum')->get('/signout', [AuthController::class, 'signOut']);
-Route::middleware('auth:sanctum')->resource('service', ServiceController::class);
+Route::middleware('auth:sanctum')->resource('services', ServiceController::class);
 Route::group(['prefix' => '/comment', 'middleware'=>'auth:sanctum'], function(){
     Route::get('', [ServiceCommentController::class, 'index'])->name('index');
     Route::get('/{id}/accept', [ServiceCommentController::class, 'accept']);

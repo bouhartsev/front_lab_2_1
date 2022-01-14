@@ -32,11 +32,13 @@ Vue.component('modal', require('./components/Modal.vue').default);
 
 const app = new Vue({
     el: '#app',
-    // created(){
-    //     window.Echo.channel('test')
-    //     .listen('EventPublicArticle', (e) =>{
-    //         console.log('cool');
-    //     })
-    
-
+    created(){
+        console.log('test');
+        window.Echo.channel('notify')
+        .listen('EventPublicArticle', ({article}) =>{
+            console.log('alert');
+            alert(`Добавлена статья ${article['name']}`);
+        });
+        console.log('end');
+    },
 });

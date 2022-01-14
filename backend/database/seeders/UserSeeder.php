@@ -21,7 +21,7 @@ class UserSeeder extends Seeder
         $user1 = new User;
         $user1->name = 'Matvey';
         $user1->email = env("ADMIN_EMAIL", 'admin@example.com');
-        $user1->password = env("ADMIN_PASSWORD", Hash::make(123456));
+        $user1->password = Hash::make(env("ADMIN_PASSWORD"));
         $user1->role_id = 4; // admin
         $user1->save();
 
