@@ -9,10 +9,9 @@ use App\Models\User;
 use App\Models\Role;
 use App\Models\Service;
 use App\Models\ServiceComment;
-use App\Notifications\ServiceNotification;
 use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Facades\Cache;
-use App\Events\CreateChannelEvent;
+use App\Events\NotifyEvent;
 
 class ServiceController extends Controller
 {
@@ -67,9 +66,8 @@ class ServiceController extends Controller
         $service->save();
         Cache::forget('services:all');
         $user = User::where('id', '!=', auth()->user()->id)->get();
-        Notification::send($user, new ServiceNotification($service));
-        
-        event(new CreateChannelEvent($service));
+    
+        event(new NotifyEvent($service));
         
         return response()->json([
             'service' => $service

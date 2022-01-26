@@ -13,6 +13,6 @@ use Illuminate\Support\Facades\Broadcast;
 |
 */
 
-Broadcast::channel('notify', function () {
-    return true;
-   });
+// Broadcast::channel('notify', function () {
+//     return true;
+//    });

@@ -6,7 +6,10 @@
 
 const { default: Echo } = require('laravel-echo');
 
+// import Echo from 'laravel-echo'
+
 require('./bootstrap');
+
 
 window.Vue = require('vue').default;
 
@@ -22,7 +25,6 @@ window.Vue = require('vue').default;
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
-Vue.component('modal', require('./components/Modal.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -32,13 +34,16 @@ Vue.component('modal', require('./components/Modal.vue').default);
 
 const app = new Vue({
     el: '#app',
+    template: '<example-component/>',
     created(){
-        console.log('test');
-        window.Echo.channel('notify')
-        .listen('EventPublicArticle', ({article}) =>{
-            console.log('alert');
-            alert(`Добавлена статья ${article['name']}`);
+        window.Echo = new Echo({
+            broadcaster: 'pusher',
+            key: '19664e40f4288c63ca3f',
+            cluster: 'eu',
+            forceTLS: true
         });
-        console.log('end');
+        window.Echo.channel('notify').listen('.EventPublicService', (data) =>{
+            console.log(data);
+        });
     },
 });
