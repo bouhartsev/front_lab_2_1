@@ -10,7 +10,16 @@
         <!-- including -->
     </head>
     <body>
-        <nav>Nav</nav>
+        <nav>Nav
+        <a href="/">Home</a>
+        <a href="/services/">Услуги</a>
+        @if (Auth::guest())
+            <a href="/registration">Регистрация</a>
+            <a href="/login">Войти</a>
+        @else
+            <a href="/logout">Выйти</a>
+        @endif
+        </nav>
         <div class="container">
             @yield('content')
         </div>

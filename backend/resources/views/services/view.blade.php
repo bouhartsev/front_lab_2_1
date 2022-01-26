@@ -5,32 +5,35 @@
     <p>{{$service->desc}}</p>
     <br/>
 
-    {{-- 
     <div>
     @foreach($comments as $comment)
-        <b>{{$comment->title}}</b>
+        <b>{{$comment->mark}}</b>
         <p>{{$comment->comment}}</p>
     @endforeach
     <br/>
-    {{ $comments ->links() }}
-    </div> --}}
+    <!-- {{ $comments ->links() }} -->
+    <!-- </div> -->
 
-    <a class="btn btn-secondary" href="/services/{{$service->id}}/edit">Редактировать</a>
-    <a class="btn btn-primary" href="/services/{{$service->id}}/delete">Удалить</a>
+    <a href="/services/{{$service->id}}/edit">Редактировать</a>
+    <a href="/services/{{$service->id}}/delete">Удалить</a>
 
 
-    <!-- <form method="POST" action="/services/{{$service->id}}/comment">
-        @csrf -->
-        <!-- <input type="hidden" name="service_id" value="{{$service->id}}"/> -->
 
-        <!-- <div class="mb-3">
-            <label class="form-label">Заголовок комментария</label>
-            <input type="text" name="comment_title" class="form-control"/>
+    <br/><br/><br/><br/>
+
+    <form method="POST" action="/services/{{$service->id}}/comment">
+        @csrf
+        <input type="hidden" name="service_id" value="{{$service->id}}"/>
+
+        <div>
+            <label>Оценка</label>
+            <input type="number" name="comment_mark"/>
         </div>
-        <div class="mb-3">
-            <label class="form-label">Комментарий</label>
-            <textarea class="form-control" name="comment" rows="3" required></textarea>
+        <div>
+            <labe>Комментарий</label>
+            <textarea name="comment" rows="3" required></textarea>
         </div>
-        <button class="btn btn-primary">Отправить</button>
-    </form> -->
+        <button>Отправить</button>
+    </form>
+    
 @endsection

@@ -7,6 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Service extends Model
 {
-    // use HasFactory;
+    use HasFactory;
+
+    public function comments(){
+        return $this->hasMany(ServiceComment::class, 'service_id');
+    }
     
 }

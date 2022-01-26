@@ -18,6 +18,7 @@ class CreateServicesTable extends Migration
             $table->string("image_full")->nullable();
             $table->string("image_preview")->nullable();
             $table->string("name");
+            $table->string("slug");
             $table->string("desc");
             $table->string("desc_short")->nullable();
             $table->double("price", 8, 2);
