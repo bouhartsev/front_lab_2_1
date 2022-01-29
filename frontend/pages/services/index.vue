@@ -37,13 +37,8 @@
 					</template> -->
             <!--for artists-->
             <v-card-title>{{ item.name }}</v-card-title>
-            <!--for artists-->
             <v-card-subtitle v-if="item.shortDesc">{{
               item.shortDesc
-            }}</v-card-subtitle>
-            <!--for releases-->
-            <v-card-subtitle v-if="'test' == 'releases' && item.tracks">{{
-              item.tracks.length == 1 ? "single" : "album"
             }}</v-card-subtitle>
             <v-card-text>
               <p v-if="item.quantity"><b>Тираж: </b> {{ item.quantity }}</p>

@@ -1,9 +1,13 @@
 <template>
   <v-row>
-    <v-col sm="3"> <p style="position: fixed">Фильтры</p></v-col>
+    <v-col sm="3">
+      <p style="position: fixed">
+        Категории <br />
+        <br />
+        Фильтры (характеристики)
+      </p></v-col
+    >
     <v-col><nuxt-child /></v-col>
-    
-    
   </v-row>
 </template>
 
@@ -13,6 +17,7 @@ h2 {
 }
 .v-card__price {
   position: relative;
+  align-self: end;
 
   color: red;
   white-space: nowrap;
@@ -33,6 +38,7 @@ h2 {
 }
 
 .btnToOrder {
+  /* float: right; */
   max-width: 40%;
 }
 .btnToOrder > * {

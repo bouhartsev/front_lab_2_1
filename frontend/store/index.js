@@ -40,16 +40,16 @@ const mutations = {
 };
 
 const actions = {
-  GET_SERVICES: async (context, payload) => {
-    let {data} = await axios.get('/api/services.json');
+  async GET_SERVICES (context, payload) {
+    let data = await this.$axios.$get('services.json');
     context.commit('SET_SERVICES', data);
     console.log(payload); //temp - never used
   },
-  GET_SERVICE: async (context, payload) => {
+  async GET_SERVICE (context, payload) {
     // one service
 
     // !!!! temp - from services
-    let {data} = await axios.get('/api/services.json');
+    let data = await this.$axios.$get('services.json');
     context.commit('SET_SERVICES', data);
     console.log(payload);
   },

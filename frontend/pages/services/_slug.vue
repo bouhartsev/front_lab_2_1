@@ -13,14 +13,25 @@
 
     <p>{{ service.desc }}</p>
 
-    <span
-      :data-price-old="service.price_old"
-      data-currency="руб."
-      class="v-card__price"
-      >{{ service.price }}</span
-    >
-    <v-spacer></v-spacer>
-    <v-btn :to="{ name: 'order' }" class="btnToOrder">Добавить в заказ</v-btn>
+    <div class="d-flex flex-row price-n-order">
+      <span
+        :data-price-old="service.price_old"
+        data-currency="руб."
+        class="v-card__price"
+        >{{ service.price }}</span
+      >
+      <v-spacer></v-spacer>
+      <v-btn :to="{ name: 'order' }" class="btnToOrder">Добавить в заказ</v-btn>
+    </div>
+
+    <!-- form -->
+    <!-- leave the comment -->
+    <!-- comments -->
+    <!-- recommended -->
+
+    <br>
+    <br><br>
+    <p>TEMP DEBUG:</p>
 
     <br />
     URL: {{ this.$nuxt.context.params.slug }}
@@ -69,5 +80,9 @@ export default {
   width: 400px;
   margin: 10px;
   margin-left: 0;
+}
+
+.price-n-order {
+  margin-top: 20px;
 }
 </style>
