@@ -2,35 +2,50 @@
   <div v-if="service">
     <h2>{{ service.name }}</h2>
 
-    <v-responsive aspect-ratio="1.5" class="service-image">
-      <v-carousel v-if="Array.isArray(service.image_full)" height="100%">
-        <v-carousel-item v-for="(photo, i) in service.image_full" :key="i">
-          <v-img :src="photo" />
-        </v-carousel-item>
-      </v-carousel>
-      <v-img v-else :src="service.image_full" :lazy-src="item.image_preview" />
-    </v-responsive>
-
-    <p>{{ service.desc }}</p>
-
-    <div class="d-flex flex-row price-n-order">
-      <span
-        :data-price-old="service.price_old"
-        data-currency="руб."
-        class="v-card__price"
-        >{{ service.price }}</span
-      >
-      <v-spacer></v-spacer>
-      <v-btn :to="{ name: 'order' }" class="btnToOrder">Добавить в заказ</v-btn>
-    </div>
+    <v-row>
+      <v-col>
+        <v-row>
+          <v-responsive aspect-ratio="1.5" class="service-image">
+            <v-carousel v-if="Array.isArray(service.image_full)" height="100%">
+              <v-carousel-item
+                v-for="(photo, i) in service.image_full"
+                :key="i"
+              >
+                <v-img :src="photo" />
+              </v-carousel-item>
+            </v-carousel>
+            <v-img
+              v-else
+              :src="service.image_full"
+              :lazy-src="item.image_preview"
+            />
+          </v-responsive>
+        </v-row>
+      </v-col>
+      <v-col class="d-flex flex-column justify-space-between">
+        <p>{{ service.desc }}</p>
+        <div class="d-flex flex-row">
+          <span
+            :data-price-old="service.price_old"
+            data-currency="руб."
+            class="v-card__price"
+            >{{ service.price }}</span
+          >
+          <v-spacer></v-spacer>
+          <v-btn :to="{ name: 'order' }" class="btnToOrder"
+            >Добавить в заказ</v-btn
+          >
+        </div>
+      </v-col>
+    </v-row>
 
     <!-- form -->
     <!-- leave the comment -->
     <!-- comments -->
     <!-- recommended -->
 
-    <br>
-    <br><br>
+    <br />
+    <br /><br />
     <p>TEMP DEBUG:</p>
 
     <br />
@@ -80,9 +95,5 @@ export default {
   width: 400px;
   margin: 10px;
   margin-left: 0;
-}
-
-.price-n-order {
-  margin-top: 20px;
 }
 </style>
