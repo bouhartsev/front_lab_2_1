@@ -17,7 +17,7 @@
             <v-img
               v-else
               :src="service.image_full"
-              :lazy-src="item.image_preview"
+              :lazy-src="service.image_preview"
             />
           </v-responsive>
         </v-row>
@@ -39,7 +39,20 @@
       </v-col>
     </v-row>
 
-    <!-- form -->
+    <v-card class="mx-auto mt-10" max-width="800"
+      ><v-card-title class="justify-center">Добавление в заказ</v-card-title
+      ><v-card-text class="body-1"><ServiceConfig /></v-card-text>
+      <v-card-actions
+      class="justify-center"
+        ><v-btn
+          :to="{ name: 'order' }"
+          class="btnToOrder"
+          style="justify-self: center"
+          >Добавить</v-btn
+        ></v-card-actions
+      ></v-card
+    >
+    
     <!-- leave the comment -->
     <!-- comments -->
     <!-- recommended -->
